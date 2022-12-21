@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.tutorapp.fragment.SearchFragment;
 import com.example.tutorapp.search.SearchPostFragment;
-import com.example.tutorapp.search.SearchTutorFragment;
+import com.example.tutorapp.search.SearchStudentFragment;
+import com.example.tutorapp.search.SearchStudentFragment;
 
 public class SearchViewPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -22,7 +24,7 @@ public class SearchViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new SearchPostFragment();
             case 1:
-                return new SearchTutorFragment();
+                return new SearchStudentFragment();
             default:
                 return new SearchPostFragment();
         }
@@ -41,7 +43,7 @@ public class SearchViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return "Bài đăng";
             case 1:
-                return "Gia sư";
+                return "Học viên";
             default:
                 return "Bài đăng";
         }

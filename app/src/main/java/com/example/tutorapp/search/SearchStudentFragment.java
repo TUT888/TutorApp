@@ -17,26 +17,26 @@ import android.widget.Toast;
 
 import com.example.tutorapp.MainActivity;
 import com.example.tutorapp.R;
-import com.example.tutorapp.adapter.SearchTutorAdapter;
+import com.example.tutorapp.adapter.SearchStudentAdapter;
 import com.example.tutorapp.api.APIService;
 import com.example.tutorapp.api.ResultAPI;
-import com.example.tutorapp.app_interface.IClickTutorObjectListener;
-import com.example.tutorapp.model.Tutor;
+import com.example.tutorapp.app_interface.IClickStudentObjectListener;
+import com.example.tutorapp.model.Student;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
 
-public class SearchTutorFragment extends Fragment {
+public class SearchStudentFragment extends Fragment {
 
     private View mView;
     private MainActivity mMainActivity;
-    private RecyclerView rcvSearchTutor;
-    private SearchView svSearchTutor;
-    private SearchTutorAdapter searchTutorAdapter;
-    private ArrayList<Tutor> searchTutorArrayList;
+    private RecyclerView rcvSearchStudent;
+    private SearchView svSearchStudent;
+    private SearchStudentAdapter searchStudentAdapter;
+    private ArrayList<Student> searchStudentArrayList;
 
-    public SearchTutorFragment() {
+    public SearchStudentFragment() {
         // Required empty public constructor
     }
 
@@ -45,27 +45,27 @@ public class SearchTutorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_search_tutor, container, false);
+        mView = inflater.inflate(R.layout.fragment_search_student, container, false);
         mMainActivity = (MainActivity) getActivity();
-        rcvSearchTutor = mView.findViewById(R.id.rcvSearchTutor);
+        rcvSearchStudent = mView.findViewById(R.id.rcvSearchStudent);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rcvSearchTutor.setLayoutManager(linearLayoutManager);
-        svSearchTutor = mView.findViewById(R.id.svSearchTutor);
-        initTutor();
-        searchTutorAdapter = new SearchTutorAdapter(searchTutorArrayList, new IClickTutorObjectListener() {
+        rcvSearchStudent.setLayoutManager(linearLayoutManager);
+        svSearchStudent = mView.findViewById(R.id.svSearchStudent);
+        initStudent();
+        searchStudentAdapter = new SearchStudentAdapter(searchStudentArrayList, new IClickStudentObjectListener() {
             @Override
-            public void onClickTutorObject(Tutor tutor) {
-                mMainActivity.goToTutorDetailFragment(tutor, SearchTutorFragment.class.getSimpleName());
+            public void onClickStudentObject(Student student) {
+                mMainActivity.goToStudentDetailFragment(student, SearchStudentFragment.class.getSimpleName());
 
             }
 
             @Override
-            public void onClickBtnHideTutor(Tutor tutor) {
+            public void onClickBtnHideStudent(Student student) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage("Bạn có muốn ẩn người dùng này không?")
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                searchTutorAdapter.remove(tutor);
+                                searchStudentAdapter.remove(student);
                             }
                         })
                         .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -76,9 +76,9 @@ public class SearchTutorFragment extends Fragment {
                 builder.show();
             }
         });
-        rcvSearchTutor.setAdapter(searchTutorAdapter);
+        rcvSearchStudent.setAdapter(searchStudentAdapter);
 
-        svSearchTutor.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        svSearchStudent.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -93,14 +93,14 @@ public class SearchTutorFragment extends Fragment {
         return mView;
     }
 
-    private void initTutor() {
+    private void initStudent() {
         filterList("");
     }
 
     private void filterList(String newText) {
-        searchTutorArrayList = new ArrayList<>();
+        searchStudentArrayList = new ArrayList<>();
         Log.d("newText", "filterList: " + newText);
-        APIService.apiService.getSearchTutor(newText).enqueue(new retrofit2.Callback<ResultAPI>() {
+        APIService.apiService.getSearchStudent(newText).enqueue(new retrofit2.Callback<ResultAPI>() {
             @Override
             public void onResponse(retrofit2.Call<ResultAPI> call, retrofit2.Response<ResultAPI> response) {
                 ResultAPI resultAPI = response.body();
@@ -109,23 +109,20 @@ public class SearchTutorFragment extends Fragment {
                     if (resultAPI.getCode() == 0){
                         for (int i = 0; i < resultAPI.getData().getAsJsonArray().size(); i++){
                             JsonObject jsonObject = resultAPI.getData().getAsJsonArray().get(i).getAsJsonObject();
-                            Tutor tutor = new Tutor();
-                            tutor.setPhoneNumber(jsonObject.get("id").getAsString());
-                            tutor.setName(jsonObject.get("name").getAsString());
-                            tutor.setAreas(jsonObject.get("areas").getAsString());
-                            tutor.setGender(jsonObject.get("gender").getAsInt());
-                            tutor.setBirthday(jsonObject.get("birthday").getAsString());
-                            tutor.setEmail(jsonObject.get("email").getAsString());
-                            tutor.setFields(jsonObject.get("fields").getAsString());
-                            tutor.setSchool(jsonObject.get("school").getAsString());
-                            tutor.setAcademicLevel(jsonObject.get("academicLevel").getAsString());
-                            tutor.setAddress(jsonObject.get("area").getAsString());
-                            tutor.setAvatar(jsonObject.get("avatar").getAsString());
-                            tutor.setPassword(jsonObject.get("password").getAsString());
+                            Student student = new Student();
+                            student.setPhoneNumber(jsonObject.get("id").getAsString());
+                            student.setName(jsonObject.get("name").getAsString());
+                            student.setGender(jsonObject.get("gender").getAsInt());
+                            student.setBirthday(jsonObject.get("birthday").getAsString());
+                            student.setEmail(jsonObject.get("email").getAsString());
+                            student.setFields(jsonObject.get("fields").getAsString());
+                            student.setAddress(jsonObject.get("area").getAsString());
+                            student.setAvatar(jsonObject.get("avatar").getAsString());
+                            student.setPassword(jsonObject.get("password").getAsString());
 
-                            searchTutorArrayList.add(tutor);
+                            searchStudentArrayList.add(student);
                         }
-                        searchTutorAdapter.setData(searchTutorArrayList);
+                        searchStudentAdapter.setData(searchStudentArrayList);
                     }
                 }
 

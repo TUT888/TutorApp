@@ -13,4 +13,6 @@
     <dimen name="avatarImagePost">50dp</dimen>
     <dimen name="avatarImageTutor">180dp</dimen>
     <dimen name="avatarImageTutorAdapter">80dp</dimen>
+    <dimen name="avatarImageStudent">180dp</dimen>
+    <dimen name="avatarImageStudentAdapter">80dp</dimen>
 </resources>

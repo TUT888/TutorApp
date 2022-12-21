@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.example.tutorapp.MainActivity;
 import com.example.tutorapp.R;
 import com.example.tutorapp.api.LoadImageInternet;
+import com.example.tutorapp.app_interface.IClickTutorBtnListener;
 import com.example.tutorapp.model.User;
+import com.google.android.material.button.MaterialButton;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,11 +26,13 @@ public class AccountInfoFragment extends Fragment {
     private ImageView civAvatar;
     private TextView tvName, tvPhoneNumber, tvArea, tvGender, tvBirthday, tvEmail, tvStatus;
     private ImageButton ibBack;
+    private MaterialButton mbRating;
+    private IClickTutorBtnListener iClickTutorBtnListener;
     // Data
     User currentUser;
 
-    public AccountInfoFragment() {
-        // Required empty public constructor
+    public AccountInfoFragment(IClickTutorBtnListener iClickTutorBtnListener) {
+        this.iClickTutorBtnListener = iClickTutorBtnListener;
     }
 
     @Override
@@ -47,7 +51,7 @@ public class AccountInfoFragment extends Fragment {
         tvStatus = mView.findViewById(R.id.tvStatus);
         tvName = mView.findViewById(R.id.tvName);
         civAvatar = mView.findViewById(R.id.civAvatar);
-
+        mbRating = mView.findViewById(R.id.mbRating);
 
         currentUser = mMainActivity.getCurrentLoginUser();
         if (currentUser!=null) {
@@ -76,6 +80,12 @@ public class AccountInfoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getFragmentManager().popBackStack();
+            }
+        });
+        mbRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iClickTutorBtnListener.openAllRatingsFragment(currentUser.getPhoneNumber());
             }
         });
 

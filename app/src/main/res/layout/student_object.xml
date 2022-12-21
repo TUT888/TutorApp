@@ -26,8 +26,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgAvatar"
-                    android:layout_width="@dimen/avatarImageTutorAdapter"
-                    android:layout_height="@dimen/avatarImageTutorAdapter"
+                    android:layout_width="@dimen/avatarImageStudentAdapter"
+                    android:layout_height="@dimen/avatarImageStudentAdapter"
                     android:layout_gravity="center"
                     android:src="@mipmap/ic_launcher" />
 
@@ -49,7 +49,7 @@
                         android:id="@+id/tvRole"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gia sư"
+                        android:text="Học viên"
                         android:textColor="@color/text_color" />
                     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"

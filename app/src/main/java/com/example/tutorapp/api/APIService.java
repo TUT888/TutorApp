@@ -33,13 +33,13 @@ public interface APIService {
             .create(APIService.class);
 
     @GET("post/get_search_post.php")
-    Call<ResultObjectAPI> getSearchPost(@Query("key") String search);
+    Call<ResultObjectAPI> getSearchPost(@Query("key") String search, @Query("user_id") String user_id, @Query("role") int role);
 
     @GET("user/get_user.php")
     Call<ResultObjectAPI> getUser(@Query("phoneNumber") String id);
 
-    @GET("class/get_classes.php")
-    Call<ResultAPI> getClasses(@Query("studentPhone") String studentPhone);
+    @GET("class/get_classes_from_tutor.php")
+    Call<ResultAPI> getClassesFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @GET("class/get_class_rated_from_tutor.php")
     Call<ResultAPI> getClassRatedFromTutor(@Query("tutorPhone") String tutorPhone);
@@ -47,18 +47,12 @@ public interface APIService {
     @GET("class/get_class_by_id.php")
     Call<ResultObjectAPI> getClassById(@Query("classID") String classID);
 
-    @GET("class/get_active_class.php")
-    Call<ResultAPI> getActiveClass(@Query("studentPhone") String studentPhone);
+    @GET("class/get_active_classes_from_tutor.php")
+    Call<ResultAPI> getActiveClassFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @Headers({"Content-Type: application/json"})
     @PUT("class/update_status.php")
     Call<ResultStringAPI> updateStatus(@Body Map<String,String> body);
-
-    @FormUrlEncoded
-    @POST("rate/add_new_rating.php")
-    Call<ResultStringAPI> addNewRating(@Field("classID") String classID,
-                                  @Field("rate") float rate, @Field("comment") String comment,
-                                       @Field("date") String date);
 
     @GET("rate/get_rating_by_classID.php")
     Call<ResultObjectAPI> getRatingByClassID(@Query("classID") String classID);
@@ -68,8 +62,8 @@ public interface APIService {
     Call<ResultObjectAPI> userLogin(@Field("phoneNumber") String phoneNumber,
                                     @Field("password") String password);
 
-    @GET("tutor/get_search_tutor.php")
-    Call<ResultAPI> getSearchTutor(@Query("key") String search);
+    @GET("student/get_search_student.php")
+    Call<ResultAPI> getSearchStudent(@Query("key") String search);
 
     @Headers({"Content-Type: application/json"})
     @POST("post/add_new_post.php")
@@ -86,8 +80,8 @@ public interface APIService {
     @GET("post/get_my_posts.php")
     Call<ResultAPI> getMyPosts(@Query("phoneNumber") String phoneNumber);
 
-    @GET("class/get_pending_class.php")
-    Call<ResultAPI> getPendingClass(@Query("studentPhone") String search);
+    @GET("class/get_pending_classes_from_tutor.php")
+    Call<ResultAPI> getPendingClassFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @GET("post/remove_my_post.php")
     Call<ResultStringAPI> removeMyPost(@Query("postID") String postID);
@@ -100,4 +94,8 @@ public interface APIService {
     @Headers({"Content-Type: application/json"})
     @POST("user/tutor_register.php")
     Call<ResultStringAPI> register(@Body User newUser);
+
+    @Headers({"Content-Type: application/json"})
+    @POST("post/update_hideFrom.php")
+    Call<ResultStringAPI> updateHideFrom(@Body Map<String,String> body);
 }

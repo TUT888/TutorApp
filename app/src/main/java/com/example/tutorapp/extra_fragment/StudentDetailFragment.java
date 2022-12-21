@@ -16,26 +16,26 @@ import com.example.tutorapp.MainActivity;
 import com.example.tutorapp.R;
 import com.example.tutorapp.api.LoadImageInternet;
 import com.example.tutorapp.app_interface.IClickTutorBtnListener;
-import com.example.tutorapp.model.Tutor;
+import com.example.tutorapp.model.Student;
 import com.google.android.material.button.MaterialButton;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class TutorDetailFragment extends Fragment {
+public class StudentDetailFragment extends Fragment {
 
     private View mView;
     private CircleImageView civAvatar;
-    private TextView tvName, tvRole, tvEmail, tvSDT, tvGioiTinh, tvLinhVuc, tvKhuVuc, tvHocVan, tvTruong, tvDate;
+    private TextView tvName, tvEmail, tvSDT, tvGioiTinh, tvLinhVuc, tvKhuVuc, tvDate;
     private MaterialButton mbContact, mbRating;
     private ImageButton ibBack;
-    private Tutor tutor;
+    private Student student;
     private String previousFragment;
-    private IClickTutorBtnListener iClickTutorBtnListener;
+    private IClickTutorBtnListener iClickStudentBtnListener;
 
 
-    public TutorDetailFragment(IClickTutorBtnListener iClickTutorBtnListener) {
-        this.iClickTutorBtnListener = iClickTutorBtnListener;
+    public StudentDetailFragment(IClickTutorBtnListener iClickStudentBtnListener) {
+        this.iClickStudentBtnListener = iClickStudentBtnListener;
     }
 
 
@@ -43,18 +43,15 @@ public class TutorDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_tutor_detail, container, false);
+        mView = inflater.inflate(R.layout.fragment_student_detail, container, false);
         civAvatar = mView.findViewById(R.id.civAvatar);
         tvName = mView.findViewById(R.id.tvName);
-        tvRole = mView.findViewById(R.id.tvRole);
         tvEmail = mView.findViewById(R.id.tvEmail);
         tvSDT = mView.findViewById(R.id.tvSDT);
         tvDate = mView.findViewById(R.id.tvBirthday);
         tvGioiTinh = mView.findViewById(R.id.tvGioiTinh);
         tvLinhVuc = mView.findViewById(R.id.tvLinhVuc);
         tvKhuVuc = mView.findViewById(R.id.tvKhuVuc);
-        tvHocVan = mView.findViewById(R.id.tvHocVan);
-        tvTruong = mView.findViewById(R.id.tvTruong);
         mbContact = mView.findViewById(R.id.mbContact);
         ibBack = mView.findViewById(R.id.ibBack);
         mbRating = mView.findViewById(R.id.mbRating);
@@ -68,7 +65,7 @@ public class TutorDetailFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null){
-            tutor = (Tutor) bundle.getSerializable("tutor");
+            student = (Student) bundle.getSerializable("student");
             previousFragment = bundle.getString("previous", "");
         }
 
@@ -76,30 +73,28 @@ public class TutorDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + tutor.getPhoneNumber()));
+                intent.setData(Uri.parse("tel:" + student.getPhoneNumber()));
                 startActivity(intent);
             }
         });
 
-        if (tutor != null){
-            tvName.setText(tutor.getName());
-            tvDate.setText(tutor.getBirthday());
-            tvEmail.setText(tutor.getEmail());
-            tvSDT.setText(tutor.getPhoneNumber());
-            new LoadImageInternet(civAvatar).execute(MainActivity.URL_IMAGE +  tutor.getAvatar());
-            if (tutor.getGender() == 0){
+        if (student != null){
+            tvName.setText(student.getName());
+            tvDate.setText(student.getBirthday());
+            tvEmail.setText(student.getEmail());
+            tvSDT.setText(student.getPhoneNumber());
+            new LoadImageInternet(civAvatar).execute(MainActivity.URL_IMAGE +  student.getAvatar());
+            if (student.getGender() == 0){
                 tvGioiTinh.setText("Nam");
             }else {
                 tvGioiTinh.setText("Nữ");
             }
-            tvLinhVuc.setText(tutor.getFields());
-            tvKhuVuc.setText(tutor.getAreas());
-            tvHocVan.setText(tutor.getAcademicLevel());
-            tvTruong.setText(tutor.getSchool());
+            tvLinhVuc.setText(student.getFields());
+            tvKhuVuc.setText(student.getAddress());
             mbRating.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    iClickTutorBtnListener.openAllRatingsFragment(tutor.getPhoneNumber());
+                    iClickStudentBtnListener.openAllRatingsFragment(student.getPhoneNumber());
                 }
             });
         }

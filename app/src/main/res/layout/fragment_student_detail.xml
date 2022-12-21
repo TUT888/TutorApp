@@ -31,8 +31,8 @@
                     android:scaleType="fitCenter"/>
             </LinearLayout>
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/avatarImageTutor"
-                android:layout_height="@dimen/avatarImageTutor"
+                android:layout_width="@dimen/avatarImageStudent"
+                android:layout_height="@dimen/avatarImageStudent"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
                 android:id="@+id/civAvatar"
@@ -97,7 +97,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Gia sư"
+                            android:text="Học viên"
                             android:textColor="@color/text_color"
                             android:textSize="18sp"/>
 
@@ -211,28 +211,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lĩnh vực: "
-                            android:textSize="18sp"
-                            android:textColor="@color/primary_color"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/tvLinhVuc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Toán học, Vật lý"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:textSize="16sp"
-                            android:textColor="@color/text_color"
-                            android:layout_marginLeft="5dp"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -256,47 +234,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Hiện là: "
-                            android:textColor="@color/primary_color"
+                            android:text="Lĩnh vực quan tâm: "
                             android:textSize="18sp"
+                            android:textColor="@color/primary_color"
                             android:textStyle="bold" />
                         <TextView
-                            android:id="@+id/tvHocVan"
+                            android:id="@+id/tvLinhVuc"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Sinh viên"
+                            android:text="Toán học, Vật lý"
                             android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
                             android:textSize="16sp"
                             android:textColor="@color/text_color"
                             android:layout_marginLeft="5dp"/>
                     </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Trường: "
-                            android:textColor="@color/primary_color"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:id="@+id/tvTruong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Đại học Tôn Đức Thắng"
-                            android:layout_weight="1"
-                            android:textSize="16dp"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@color/text_color"
-                            android:layout_marginLeft="5dp"/>
-                    </TableRow>
+
                 </TableLayout>
 
             </LinearLayout>

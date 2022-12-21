@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".search.SearchTutorFragment"
+    tools:context=".search.SearchStudentFragment"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,11 +15,11 @@
         app:queryHint="Tìm kiếm"
         app:iconifiedByDefault="false"
         android:background="@drawable/bg_search_view"
-        android:id="@+id/svSearchTutor"/>
+        android:id="@+id/svSearchStudent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rcvSearchTutor" />
+        android:id="@+id/rcvSearchStudent" />
 
 </LinearLayout>

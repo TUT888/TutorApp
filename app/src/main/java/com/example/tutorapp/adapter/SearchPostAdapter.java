@@ -73,7 +73,7 @@ public class SearchPostAdapter extends RecyclerView.Adapter<SearchPostAdapter.Se
         //holder.imgAvatar.setImageResource(post.getUser().getAvatar());
         holder.tvName.setText(names.get(position));
 
-        holder.tvRole.setText("Gia sư");
+        holder.tvRole.setText("Học viên");
         holder.tvTitle.setText(post.getTitle());
         holder.tvMonHoc.setText(post.getSubject());
         holder.tvKhuVuc.setText(String.join(", ", post.getLearningPlaces()));
