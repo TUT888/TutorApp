@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="Thêm"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <View
@@ -35,10 +36,21 @@
         android:layout_height="2dp"
         android:background="@color/text_color"/>
 
+    <TextView
+        android:id="@+id/notLoginPostView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Bạn cần đăng nhập để sử dụng chức năng này"
+        android:textColor="@color/primary_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvMyPosts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/mediumSpace"/>
+        android:layout_marginTop="@dimen/mediumSpace"
+        android:visibility="gone"/>
 
 </LinearLayout>

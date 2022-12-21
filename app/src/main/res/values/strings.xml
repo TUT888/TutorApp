@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StudentApp</string>
+    <string name="app_name">TutorApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="yes">Có</string>
@@ -11,6 +11,6 @@
     <string name="register"><u>Đăng ký</u></string>
     <string name="login"><u>Đăng nhập</u></string>
 
-    <string name="current_role">Học viên</string>
-    <string name="view_role">Học viên</string>
+    <string name="current_role">Gia sư</string>
+    <string name="view_role">Gia sư</string>
 </resources>
