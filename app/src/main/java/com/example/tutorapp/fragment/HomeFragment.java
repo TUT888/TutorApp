@@ -2,6 +2,7 @@ package com.example.tutorapp.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -41,9 +42,16 @@ public class HomeFragment extends Fragment {
     LinearLayout linearLayoutHome;
     TableLayout thu2, thu3, thu4, thu5, thu6, thu7, cn;
     IClickTimeTableObjectListener iClickTimeTableObjectListener;
-
+    User u;
     public HomeFragment(IClickTimeTableObjectListener iClickTimeTableObjectListener) {
         this.iClickTimeTableObjectListener = iClickTimeTableObjectListener;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mainActivity = (MainActivity) getActivity();
+        u = mainActivity.getCurrentLoginUser();
     }
 
     @Override
@@ -51,7 +59,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        mainActivity = (MainActivity) getActivity();
+
         txtViewHome = view.findViewById(R.id.txtViewHome);
         linearLayoutHome = view.findViewById(R.id.linearLayoutHome);
         thu2 = view.findViewById(R.id.thu2);
@@ -61,7 +69,6 @@ public class HomeFragment extends Fragment {
         thu6 = view.findViewById(R.id.thu6);
         thu7 = view.findViewById(R.id.thu7);
         cn = view.findViewById(R.id.cn);
-        User u =  mainActivity.getCurrentLoginUser();
         if (u != null) {
             String userId = u.getPhoneNumber();
             getData(userId);
@@ -70,6 +77,19 @@ public class HomeFragment extends Fragment {
             txtViewHome.setText("Bạn cần đăng nhập để sử dụng chức năng");
         }
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("Home Fragment", "On Resume: Refresh & Get Data Again");
+        if (u != null) {
+            String userId = u.getPhoneNumber();
+            getData(userId);
+        }
+        else {
+            txtViewHome.setText("Bạn cần đăng nhập để sử dụng chức năng");
+        }
     }
 
     void getData (String userId) {
@@ -96,11 +116,55 @@ public class HomeFragment extends Fragment {
                                 if (classTime.contains (", ")) {
                                     String[] classDate = classTime.split(", ");
                                     for (String dateTime : classDate) {
-                                        addSchedule(dateTime, classObject);
+                                        String date = dateTime.split(": ")[0];
+                                        String time = dateTime.split(": ")[1];
+                                        if (date.contains("Thứ 2")) {
+                                            checkDateTime(time, classObject, thu2);
+                                        }
+                                        if (date.contains("Thứ 3")) {
+                                            checkDateTime(time, classObject, thu3);
+                                        }
+                                        if (date.contains("Thứ 4")) {
+                                            checkDateTime(time, classObject, thu4);
+                                        }
+                                        if (date.contains("Thứ 5")) {
+                                            checkDateTime(time, classObject, thu5);
+                                        }
+                                        if (date.contains("Thứ 6")) {
+                                            checkDateTime(time, classObject, thu6);
+                                        }
+                                        if (date.contains("Thứ 7")) {
+                                            checkDateTime(time, classObject, thu7);
+                                        }
+                                        if (date.contains("Chủ nhật")) {
+                                            checkDateTime(time, classObject, cn);
+                                        }
                                     }
                                 }
                                 else {
-                                    addSchedule(classTime, classObject);
+                                    String date = classTime.split(": ")[0];
+                                    String time = classTime.split(": ")[1];
+                                    if (date.contains("Thứ 2")) {
+                                        checkDateTime(time, classObject, thu2);
+                                    }
+                                    if (date.contains("Thứ 3")) {
+                                        checkDateTime(time, classObject, thu3);
+                                    }
+                                    if (date.contains("Thứ 4")) {
+                                        checkDateTime(time, classObject, thu4);
+                                    }
+                                    if (date.contains("Thứ 5")) {
+                                        checkDateTime(time, classObject, thu5);
+                                    }
+                                    if (date.contains("Thứ 6")) {
+                                        checkDateTime(time, classObject, thu6);
+                                    }
+                                    if (date.contains("Thứ 7")) {
+                                        checkDateTime(time, classObject, thu7);
+                                    }
+                                    if (date.contains("Chủ nhật")) {
+                                        checkDateTime(time, classObject, cn);
+                                    }
                                 }
                             }
                         }
@@ -127,231 +191,52 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void addSchedule (String dateTime, ClassObject classObject) {
-        String date = dateTime.split(": ")[0];
-        String time = dateTime.split(": ")[1];
-        if (date.contains("Thứ 2")) {
-            thu2.setVisibility(View.VISIBLE);
-            int childNum = thu2.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
+    void checkDateTime (String time, ClassObject classObject, TableLayout tableLayout) {
+        tableLayout.setVisibility(View.VISIBLE);
+        int childNum = tableLayout.getChildCount();
+        if (childNum == 1) {
+            addSchedule(childNum, time, classObject, tableLayout);
+        } else {
+            for (int i = 1; i < childNum; i++) {
+                Log.d("childNum: ", ""+i);
+                TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
+                TextView textView = (TextView) tableRow.getChildAt(0);
+                String txt = textView.getText().toString();
+                Log.d("txtView: ", txt);
+                if (!txt.contains(time)) {
+                    addSchedule(childNum, time, classObject, tableLayout);
                 }
-            });
-            thu2.addView(tbr, childNum);
-        }
-        if (date.contains("Thứ 3")) {
-            thu3.setVisibility(View.VISIBLE);
-            int childNum = thu3.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
-                }
-            });
-            thu3.addView(tbr, childNum);
-        }
-        if (date.contains("Thứ 4")) {
-            thu4.setVisibility(View.VISIBLE);
-            int childNum = thu4.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
-                }
-            });
-            thu4.addView(tbr, childNum);
-        }
-        if (date.contains("Thứ 5")) {
-            thu5.setVisibility(View.VISIBLE);
-            int childNum = thu5.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
-                }
-            });
-            thu5.addView(tbr, childNum);
-        }
-        if (date.contains("Thứ 6")) {
-            thu6.setVisibility(View.VISIBLE);
-            int childNum = thu6.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
-                }
-            });
-            thu6.addView(tbr, childNum);
-        }
-        if (date.contains("Thứ 7")) {
-            thu7.setVisibility(View.VISIBLE);
-            int childNum = thu7.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
-                }
-            });
-            thu7.addView(tbr, childNum);
-        }
-        if (date.contains("Chủ nhật")) {
-            cn.setVisibility(View.VISIBLE);
-            int childNum = cn.getChildCount();
-            TableRow tbr = new TableRow(mainActivity);
-            TextView tg = new TextView(mainActivity);
-            tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
-            tg.setText(time);
-            tg.setTextSize(20);
-            tg.setGravity(Gravity.CENTER);
-            tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg);
-            TextView tg2 = new TextView(mainActivity);
-            tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
-            tg2.setTextSize(20);
-            tg2.setGravity(Gravity.CENTER);
-            tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-            tg2.setText(classObject.getClassName());
-            tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
-            tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
-            tbr.addView(tg2);
-            tbr.setVisibility(View.VISIBLE);
-            tbr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickTimeTableObjectListener.switchToClassFragment(classObject);
-                }
-            });
-            cn.addView(tbr, childNum);
+            }
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d("Home Fragment", "On Resume: Refresh & Get Data Again");
+    public void addSchedule (int childNum, String time, ClassObject classObject, TableLayout tableLayout) {
+        TableRow tbr = new TableRow(mainActivity);
+        TextView tg = new TextView(mainActivity);
+        tg.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 4.0f));
+        tg.setText(time);
+        tg.setTextSize(20);
+        tg.setGravity(Gravity.CENTER);
+        tg.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        tg.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
+        tg.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
+        tbr.addView(tg);
+        TextView tg2 = new TextView(mainActivity);
+        tg2.setLayoutParams(new TableRow.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 8.0f));
+        tg2.setTextSize(20);
+        tg2.setGravity(Gravity.CENTER);
+        tg2.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
+        tg2.setText(classObject.getClassName());
+        tg2.setTextColor(ContextCompat.getColor(mainActivity, R.color.text_color));
+        tg2.setBackgroundDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.bg_time_table));
+        tbr.addView(tg2);
+        tbr.setVisibility(View.VISIBLE);
+        tbr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iClickTimeTableObjectListener.switchToClassFragment(classObject);
+            }
+        });
+        tableLayout.addView(tbr, childNum);
     }
 }

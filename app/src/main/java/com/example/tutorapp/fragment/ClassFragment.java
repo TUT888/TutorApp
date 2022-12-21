@@ -3,6 +3,7 @@ package com.example.tutorapp.fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +24,7 @@ import com.example.tutorapp.api.ResultAPI;
 import com.example.tutorapp.app_interface.IClickBtnRatingListener;
 import com.example.tutorapp.model.ClassObject;
 import com.example.tutorapp.model.Rate;
+import com.example.tutorapp.model.User;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -37,9 +39,19 @@ public class ClassFragment extends Fragment {
     int adapterPosition = -1;
     ImageButton ibBack;
     boolean check = false;
+    private User currentUser;
+    Bundle bundle;
 
     public ClassFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        bundle = getArguments();
+        mainActivity = (MainActivity) getActivity();
+        currentUser = mainActivity.getCurrentLoginUser();
     }
 
     @Override
@@ -59,7 +71,6 @@ public class ClassFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
         rvClasses.setLayoutManager(linearLayoutManager);
-        mainActivity = (MainActivity) getActivity();
         classAdapter = new ClassAdapter(new IClickBtnRatingListener() {
             @Override
             public void rateClass(ClassObject classObject, int adapterPosition) {
@@ -71,8 +82,7 @@ public class ClassFragment extends Fragment {
                 mainActivity.goToRateDetailFragment(rate);
             }
         });
-        Bundle bundle = getArguments();
-        getData(mainActivity.getCurrentLoginUser().getPhoneNumber(), bundle);
+        getData(currentUser.getPhoneNumber(), bundle);
         rvClasses.setAdapter(classAdapter);
         return view;
     }
@@ -118,7 +128,7 @@ public class ClassFragment extends Fragment {
                                         adapterPosition = (int) result.getInt("adapter_position");
                                         if (adapterPosition != -1) {
                                             rvClasses.scrollToPosition(adapterPosition);
-                                            classAdapter.changeClassStatus(adapterPosition);
+                                            classAdapter.changeClassStatus(adapterPosition, 2);
                                         }
                                     }
                                 });
