@@ -355,29 +355,4 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPager();
         mViewPager.setCurrentItem(pagePosition);
     }
-
-    private void callAPIToAddRating (Rate rate) {
-        APIService.apiService.addNewRating(rate.getClassId(), rate.getRate(), rate.getComment(), rate.getDate())
-                .enqueue(new Callback<ResultStringAPI>() {
-                    @Override
-                    public void onResponse(Call<ResultStringAPI> call, Response<ResultStringAPI> response) {
-                        ResultStringAPI resultAPI = response.body();
-                        if (response.isSuccessful() && resultAPI != null) {
-                            if (resultAPI.getCode() == 0) {
-                                Log.d("onResponse:", "Successfully added new rating");
-                            }
-                            else {
-                                Log.d("onFailure:", "Rating: " + resultAPI.getMessage());
-                                Toast.makeText(MainActivity.this, "Thêm bài đăng thất bại", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResultStringAPI> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
-                        Log.d("onFailure", "onFailure: " + t.getMessage());
-                    }
-                });
-    }
 }

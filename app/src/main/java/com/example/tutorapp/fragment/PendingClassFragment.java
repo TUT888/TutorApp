@@ -166,7 +166,7 @@ public class PendingClassFragment extends Fragment {
     private void initClass() {
         pendingClassArrayList = new ArrayList<>();
         Log.d("currentUser", "initClass: " + currentUser.getPhoneNumber());
-        APIService.apiService.getPendingClass(currentUser.getPhoneNumber()).enqueue(new retrofit2.Callback<ResultAPI>() {
+        APIService.apiService.getPendingClassFromTutor(currentUser.getPhoneNumber()).enqueue(new retrofit2.Callback<ResultAPI>() {
             @Override
             public void onResponse(retrofit2.Call<ResultAPI> call, retrofit2.Response<ResultAPI> response) {
                 ResultAPI resultAPI = response.body();

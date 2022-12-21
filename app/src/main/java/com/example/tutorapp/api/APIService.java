@@ -47,18 +47,12 @@ public interface APIService {
     @GET("class/get_class_by_id.php")
     Call<ResultObjectAPI> getClassById(@Query("classID") String classID);
 
-    @GET("class/get_active_class_from_tutor.php")
+    @GET("class/get_active_classes_from_tutor.php")
     Call<ResultAPI> getActiveClassFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @Headers({"Content-Type: application/json"})
     @PUT("class/update_status.php")
     Call<ResultStringAPI> updateStatus(@Body Map<String,String> body);
-
-    @FormUrlEncoded
-    @POST("rate/add_new_rating.php")
-    Call<ResultStringAPI> addNewRating(@Field("classID") String classID,
-                                  @Field("rate") float rate, @Field("comment") String comment,
-                                       @Field("date") String date);
 
     @GET("rate/get_rating_by_classID.php")
     Call<ResultObjectAPI> getRatingByClassID(@Query("classID") String classID);
@@ -86,8 +80,8 @@ public interface APIService {
     @GET("post/get_my_posts.php")
     Call<ResultAPI> getMyPosts(@Query("phoneNumber") String phoneNumber);
 
-    @GET("class/get_pending_class.php")
-    Call<ResultAPI> getPendingClass(@Query("studentPhone") String search);
+    @GET("class/get_pending_classes_from_tutor.php")
+    Call<ResultAPI> getPendingClassFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @GET("post/remove_my_post.php")
     Call<ResultStringAPI> removeMyPost(@Query("postID") String postID);
