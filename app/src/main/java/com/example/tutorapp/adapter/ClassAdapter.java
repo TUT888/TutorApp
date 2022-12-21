@@ -83,8 +83,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
         if (mClass.getStatus() == ClassObject.CLASS_STATUS_ARCHIVED) {
             holder.classStatus.setTextColor(ContextCompat.getColor(holder.className.getContext(), R.color.waiting));
             holder.classStatus.setText("Lưu trữ");
-            holder.classRate.setText("Đánh giá");
-            holder.classRate.setVisibility(View.VISIBLE);
+            holder.classRate.setVisibility(View.INVISIBLE);
         }
         else if (mClass.getStatus() == ClassObject.CLASS_STATUS_RATED) {
             holder.classStatus.setTextColor(ContextCompat.getColor(holder.className.getContext(), R.color.close));
@@ -94,7 +93,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
         }
         else {
             holder.classStatus.setTextColor(ContextCompat.getColor(holder.className.getContext(), R.color.active));
-            holder.classStatus.setText("Đang học");
+            holder.classStatus.setText("Đang hoạt động");
             holder.classRate.setVisibility(View.INVISIBLE);
         }
 
@@ -109,12 +108,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
         holder.classRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mClass.getStatus() == 1) {
-                    iClickBtnRatingListener.rateClass(mClass, holder.getBindingAdapterPosition());
-                }
-                else {
-                    getRating(mClass.getId());
-                }
+                getRating(mClass.getId());
             }
         });
     }

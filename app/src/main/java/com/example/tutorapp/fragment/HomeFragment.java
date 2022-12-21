@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
     }
 
     void getData (String userId) {
-        APIService.apiService.getActiveClass(userId).enqueue(new Callback<ResultAPI>() {
+        APIService.apiService.getActiveClassFromTutor(userId).enqueue(new Callback<ResultAPI>() {
             @Override
             public void onResponse(Call<ResultAPI> call, Response<ResultAPI> response) {
                 ResultAPI resultAPI = response.body();

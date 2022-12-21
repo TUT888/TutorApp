@@ -38,8 +38,8 @@ public interface APIService {
     @GET("user/get_user.php")
     Call<ResultObjectAPI> getUser(@Query("phoneNumber") String id);
 
-    @GET("class/get_classes.php")
-    Call<ResultAPI> getClasses(@Query("studentPhone") String studentPhone);
+    @GET("class/get_classes_from_tutor.php")
+    Call<ResultAPI> getClassesFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @GET("class/get_class_rated_from_tutor.php")
     Call<ResultAPI> getClassRatedFromTutor(@Query("tutorPhone") String tutorPhone);
@@ -47,8 +47,8 @@ public interface APIService {
     @GET("class/get_class_by_id.php")
     Call<ResultObjectAPI> getClassById(@Query("classID") String classID);
 
-    @GET("class/get_active_class.php")
-    Call<ResultAPI> getActiveClass(@Query("studentPhone") String studentPhone);
+    @GET("class/get_active_class_from_tutor.php")
+    Call<ResultAPI> getActiveClassFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @Headers({"Content-Type: application/json"})
     @PUT("class/update_status.php")

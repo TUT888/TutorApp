@@ -73,11 +73,6 @@ public class ClassFragment extends Fragment {
         rvClasses.setLayoutManager(linearLayoutManager);
         classAdapter = new ClassAdapter(new IClickBtnRatingListener() {
             @Override
-            public void rateClass(ClassObject classObject, int adapterPosition) {
-                mainActivity.goToRateFragment(classObject, adapterPosition);
-            }
-
-            @Override
             public void seeRateDetail(Rate rate) {
                 mainActivity.goToRateDetailFragment(rate);
             }
@@ -87,9 +82,9 @@ public class ClassFragment extends Fragment {
         return view;
     }
 
-    private void getData(String studentPhone, Bundle bundle){
+    private void getData(String tutorPhone, Bundle bundle){
         List<ClassObject> classObjects = new ArrayList<>();
-        APIService.apiService.getClasses(studentPhone).enqueue(new retrofit2.Callback<ResultAPI>() {
+        APIService.apiService.getClassesFromTutor(tutorPhone).enqueue(new retrofit2.Callback<ResultAPI>() {
             @Override
             public void onResponse(retrofit2.Call<ResultAPI> call, retrofit2.Response<ResultAPI> response) {
                 ResultAPI resultAPI = response.body();

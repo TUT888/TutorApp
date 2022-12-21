@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.tutorapp.adapter.ViewPagerAdapter;
 import com.example.tutorapp.api.APIService;
 import com.example.tutorapp.api.ResultStringAPI;
-import com.example.tutorapp.app_interface.IClickBtnSaveRatingListener;
 import com.example.tutorapp.app_interface.IClickTutorBtnListener;
 import com.example.tutorapp.extra_fragment.AccountInfoFragment;
 import com.example.tutorapp.extra_fragment.AddNewPostFragment;
@@ -24,7 +23,6 @@ import com.example.tutorapp.extra_fragment.ChangePasswordFragment;
 import com.example.tutorapp.extra_fragment.LoginFragment;
 import com.example.tutorapp.extra_fragment.PostDetailFragment;
 import com.example.tutorapp.extra_fragment.RegisterFragment;
-import com.example.tutorapp.extra_fragment.RateFragment;
 import com.example.tutorapp.extra_fragment.RatingDetailFragment;
 import com.example.tutorapp.extra_fragment.TutorDetailFragment;
 import com.example.tutorapp.fragment.ClassFragment;
@@ -44,10 +42,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    public final static String URL = "http://192.168.1.8:8282"; // Tam url
+//    public final static String URL = "http://192.168.1.8:8282"; // Tam url
 //    public final static String URL = "http://10.35.48.79"; ///Tien url
 //    public final static String URL = "http://172.16.12.110"; ///Tien url
-//    public final static String URL = "http://192.168.1.9:8080"; /// San url
+    public final static String URL = "http://192.168.1.9:8080"; /// San url
 
     public final static String URL_IMAGE = URL +  "/image/";
     public static String CURRENT_LOGIN_AVATAR = "";
@@ -229,32 +227,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void returnToClassFragment(int adapterPosition) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("adapter_position", adapterPosition);
-        getSupportFragmentManager().setFragmentResult("getAdapterPosition", bundle);
-        getSupportFragmentManager().popBackStack();
-    }
-
-    public void goToRateFragment(ClassObject classObject, int adapterPosition) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        RateFragment rateFragment = new RateFragment(new IClickBtnSaveRatingListener() {
-            @Override
-            public void saveAndReturnToClassFragment(Rate rate) {
-                callAPIToAddRating(rate);
-                returnToClassFragment(adapterPosition);
-            }
-        }); //Child fragment
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("class_object", (Serializable) classObject);
-
-        rateFragment.setArguments(bundle);
-
-        fragmentTransaction.replace(R.id.main_activity_content, rateFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
     public void goToLoginFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         LoginFragment loginFragment = new LoginFragment(); //Child fragment
@@ -305,7 +277,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToAccountInfoFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        AccountInfoFragment accountInfoFragment = new AccountInfoFragment(); //Child fragment
+        AccountInfoFragment accountInfoFragment = new AccountInfoFragment(new IClickTutorBtnListener() {
+            @Override
+            public void openAllRatingsFragment(String tutorPhone) {
+                goToAllRatingsFragment(tutorPhone);
+            }
+        }); //Child fragment
         Bundle bundle = new Bundle();
         accountInfoFragment.setArguments(bundle);
 
