@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".extra_fragment.AddNewPostFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="@dimen/mediumSpace"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:backgroundTint="@color/white"
+                android:scaleType="fitCenter"
+                android:layout_alignParentLeft="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Tạo bài đăng"
+                android:textColor="@color/primary_color"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:layout_marginBottom="@dimen/largeSpace"
+            android:background="@drawable/bg_add_post">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/mediumSpace">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgAvatar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:src="@mipmap/ic_launcher"/>
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nguyễn Văn A"
+                        android:textColor="@color/primary_color"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:padding="@dimen/mediumSpace"
+                        android:layout_toRightOf="@+id/imgAvatar"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Tiêu đề"/>
+                <EditText
+                    android:id="@+id/etTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_add_post_input"
+                    android:textColor="@color/text_color"
+                    android:padding="@dimen/mediumSpace"
+                    android:hint="Tiêu đề"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Lĩnh vực"/>
+                <EditText
+                    android:id="@+id/etField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_add_post_input"
+                    android:textColor="@color/text_color"
+                    android:padding="@dimen/mediumSpace"
+                    android:focusable="false"
+                    android:hint="Lĩnh vực"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Tên môn học"/>
+                <EditText
+                    android:id="@+id/etSubject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_add_post_input"
+                    android:textColor="@color/text_color"
+                    android:padding="@dimen/mediumSpace"
+                    android:hint="Tên môn học"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Hình thức học"/>
+
+                <RadioGroup
+                    android:id="@+id/rgMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rbOffline"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Offline - Trực tiếp"
+                        android:textSize="18sp"
+                        android:checked="true"
+                        android:textColor="@color/text_color"/>
+                    <RadioButton
+                        android:id="@+id/rbOnline"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Online - Trực tuyến"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_color"/>
+                </RadioGroup>
+
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Ngày giờ học"/>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="1">
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbMonday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thứ 2"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"
+                            android:paddingRight="@dimen/mediumSpace"/>
+                        <EditText
+                            android:id="@+id/etTimeMonday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbTuesday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thứ 3"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"
+                            android:paddingRight="@dimen/mediumSpace"/>
+                        <EditText
+                            android:id="@+id/etTimeTuesday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbWednesday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thứ 4"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"
+                            android:paddingRight="@dimen/mediumSpace"/>
+                        <EditText
+                            android:id="@+id/etTimeWednesday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbThursday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thứ 5"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"/>
+                        <EditText
+                            android:id="@+id/etTimeThursday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbFriday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thứ 6"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"/>
+                        <EditText
+                            android:id="@+id/etTimeFriday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbSaturday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thứ 7"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"/>
+                        <EditText
+                            android:id="@+id/etTimeSaturday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                    <TableRow>
+                        <CheckBox
+                            android:id="@+id/cbSunday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chủ nhật"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:buttonTint="@color/text_color"
+                            android:layout_marginRight="6dp"/>
+                        <EditText
+                            android:id="@+id/etTimeSunday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_add_post_input_faded"
+                            android:textColor="@color/text_color"
+                            android:padding="@dimen/mediumSpace"
+                            android:hint="Hãy chọn ngày học"
+                            android:focusable="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"/>
+                    </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Địa điểm học"/>
+                <EditText
+                    android:id="@+id/etPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_add_post_input"
+                    android:textColor="@color/text_color"
+                    android:padding="@dimen/mediumSpace"
+                    android:hint="Quận 1, Quận 3, Quận 7"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Học phí/buổi"/>
+                <EditText
+                    android:id="@+id/etTuition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_add_post_input"
+                    android:textColor="@color/text_color"
+                    android:padding="@dimen/mediumSpace"
+                    android:inputType="number"
+                    android:hint="200000"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/mediumSpace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_color"
+                    android:text="Mô tả"/>
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_add_post_input"
+                    android:textColor="@color/text_color"
+                    android:padding="@dimen/mediumSpace"
+                    android:inputType="textMultiLine"
+                    android:hint="Mô tả thêm về khóa học"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Đăng"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:layout_gravity="right"
+                    android:padding="@dimen/mediumSpace"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottomNav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_tab_home"/>
+    <item
+        android:id="@+id/bottomNav_search"
+        android:title="Search"
+        android:icon="@drawable/ic_tab_search"/>
+    <item
+        android:id="@+id/bottomNav_post"
+        android:title="Post"
+        android:icon="@drawable/ic_tab_post"/>
+    <item
+        android:id="@+id/bottomNav_pending_class"
+        android:title="Pending"
+        android:icon="@drawable/ic_pending_class"/>
+    <item
+        android:id="@+id/bottomNav_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_tab_profile"/>
+</menu>

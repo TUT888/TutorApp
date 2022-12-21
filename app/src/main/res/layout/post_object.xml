@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="@color/primary_color"
+    app:strokeWidth="2dip"
+    android:layout_margin="5dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="@dimen/mediumSpace">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="@dimen/avatarImageTutorAdapter"
+                    android:layout_height="@dimen/avatarImageTutorAdapter"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nguyễn Văn A"
+                        android:textColor="@color/primary_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gia sư"
+                        android:textColor="@color/text_color" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvNgayDang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="05/12/2022" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiêu đề"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_color"/>
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="1">
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Môn học: "
+                        android:textSize="@dimen/largeFontSize"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_color"/>
+                    <TextView
+                        android:id="@+id/tvMonHoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Môn Toán"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textColor="@color/text_color"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Khu vực: "
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvKhuVuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quận 1, Quận 2"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textColor="@color/text_color"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày giờ học: "
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvNgayHoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thứ 2:9h-12h, Thứ 4:15h-17h30"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textColor="@color/text_color"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hình thức: "
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvHinhThuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Offline"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textColor="@color/text_color"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Học phí: "
+                        android:textColor="@color/primary_color"
+                        android:textSize="@dimen/largeFontSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHocPhi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="200.000 "
+                        android:textSize="@dimen/largeFontSize"
+                        android:textColor="@color/text_color"/>
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPostOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            android:visibility="gone">
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="status"
+                android:padding="@dimen/smallSpace"
+                android:background="@color/active"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnAnBaiDang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_button"
+            android:layout_gravity="right"
+            android:visibility="visible"
+            android:backgroundTint="@color/white"/>
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".extra_fragment.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/mediumSpace"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/ibBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:backgroundTint="@color/white"
+                android:scaleType="fitCenter"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ĐĂNG NHẬP"
+                android:textColor="@color/primary_color"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:paddingVertical="@dimen/mediumSpace"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/largeSpace"
+            android:paddingTop="25dp"
+            android:paddingBottom="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_add_post">
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_marginTop="@dimen/mediumSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_color"
+                android:text="Số điện thoại"/>
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_add_post_input"
+                android:textColor="@color/text_color"
+                android:padding="@dimen/mediumSpace"
+                android:hint="Số điện thoại"
+                android:inputType="number"/>
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_marginTop="@dimen/mediumSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_color"
+                android:text="Mật khẩu"/>
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_add_post_input"
+                android:textColor="@color/text_color"
+                android:padding="@dimen/mediumSpace"
+                android:inputType="textPassword"
+                android:hint="Mật khẩu"
+                android:layout_marginBottom="120dp"/>
+
+            <TextView
+                android:id="@+id/tvErrorMess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/mediumFontSize"
+                android:text="Error Message"
+                android:textColor="@color/cancel"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cornerRadius="@dimen/largeSpace"
+                android:textColor="@color/white"
+                android:textSize="@dimen/largeFontSize"
+                android:paddingVertical="@dimen/mediumSpace"
+                android:layout_marginHorizontal="@dimen/mediumSpace"
+                android:text="Đăng nhập"/>
+
+            <LinearLayout
+                android:id="@+id/layoutRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mediumFontSize"
+                    android:text="Chưa có tài khoản? "/>
+                <TextView
+                    android:id="@+id/tvRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mediumFontSize"
+                    android:textStyle="bold"
+                    android:text="@string/register"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

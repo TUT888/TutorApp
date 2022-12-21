@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/mediumSpace"
+    android:orientation="vertical"
+    tools:context=".fragment.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/mediumSpace"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:civ_circle_background_color="@color/primary_color"
+            android:src="@drawable/ic_default_user"/>
+
+        <!-- Already-Login's Layout -->
+        <LinearLayout
+            android:id="@+id/loginLayoutProfileHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/mediumSpace"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nguyễn Văn A"
+                android:textColor="@color/primary_color"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Học viên"
+                android:textSize="20sp"
+                android:textColor="@color/text_color" />
+        </LinearLayout>
+
+        <!-- Not-Login-Yet's Layout -->
+        <LinearLayout
+            android:id="@+id/logoutLayoutProfileHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Đăng nhập"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:padding="@dimen/mediumSpace"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="@dimen/mediumSpace"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Đăng ký"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:padding="@dimen/mediumSpace"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="@dimen/mediumSpace"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Already-Login's Layout -->
+    <LinearLayout
+        android:id="@+id/loginLayoutProfileContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/mediumSpace"
+        android:background="@drawable/bg_add_post"
+        android:visibility="visible">
+        <TextView
+            android:id="@+id/tvClasses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumSpace"
+            android:text="\tDanh sách lớp học"
+            android:drawableLeft="@drawable/ic_classes"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:drawableTint="@color/text_color"
+            android:textColor="@color/text_color"
+            android:textSize="26sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_color"/>
+
+        <TextView
+            android:id="@+id/tvAccountInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumSpace"
+            android:text="\tThông tin tài khoản"
+            android:drawableLeft="@drawable/ic_default_user"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:drawableTint="@color/text_color"
+            android:textColor="@color/text_color"
+            android:textSize="26sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_color"/>
+        <TextView
+            android:id="@+id/tvChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumSpace"
+            android:text="\tĐổi mật khẩu"
+            android:drawableLeft="@drawable/ic_change_password"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:drawableTint="@color/text_color"
+            android:textColor="@color/text_color"
+            android:textSize="26sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_color"/>
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumSpace"
+            android:text="\tĐăng xuất"
+            android:drawableLeft="@drawable/ic_logout"
+            android:drawableRight="@drawable/ic_arrow_right"
+            android:drawableTint="@color/text_color"
+            android:textColor="@color/text_color"
+            android:textSize="26sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_color"/>
+    </LinearLayout>
+
+    <!-- Not-Login-Yet's Layout -->
+    <LinearLayout
+        android:id="@+id/logoutLayoutProfileContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/mediumSpace"
+        android:background="@drawable/bg_add_post"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="20dp"
+            android:textColor="@color/text_color"
+            android:textSize="24sp"
+            android:text="@string/login_to_use"
+            android:paddingHorizontal="@dimen/mediumSpace"/>
+    </LinearLayout>
+</LinearLayout>

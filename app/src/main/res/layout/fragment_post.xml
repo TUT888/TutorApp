@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/mediumSpace"
+    tools:context=".fragment.MyPostFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bài đăng của bạn"
+            android:padding="@dimen/mediumSpace"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="@dimen/TitleFontSize"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_color"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddNewPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Thêm"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/text_color"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvMyPosts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mediumSpace"/>
+
+</LinearLayout>

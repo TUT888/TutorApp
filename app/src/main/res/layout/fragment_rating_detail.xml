@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/ibBack"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_back"
+            android:backgroundTint="@color/white"
+            android:scaleType="fitCenter"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:id="@+id/ratedClassName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên khóa học"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gia sư: "
+                    android:textColor="@color/primary_color"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/ratedClassTutor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nguyễn Văn A"
+                    android:textColor="@color/text_color"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ratedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:gravity="end|center_vertical"
+            android:text="05/12/2001"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/primary_color"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đánh giá: "
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+        <RatingBar
+            android:id="@+id/ratedBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/star_color"
+            android:numStars="5"
+            android:progressTint="@color/star_color"
+            android:rating="0"
+            android:secondaryProgressTint="@android:color/transparent"
+            android:stepSize="0.5"
+            android:isIndicator="false"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bình luận: "
+        android:textColor="@color/primary_color"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/ratedCmt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Không có bình luận"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:background="@drawable/bg_cmt"
+        android:padding="10dp"
+        android:layout_marginBottom="5dp"
+        android:justificationMode="inter_word"
+        android:textSize="18sp"/>
+
+</LinearLayout>

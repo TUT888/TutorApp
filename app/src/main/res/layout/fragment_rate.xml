@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".extra_fragment.RateFragment"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/white">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/ibBack"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:backgroundTint="@color/white"
+            android:scaleType="fitCenter"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:id="@+id/rtClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên khóa học"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gia sư: "
+                    android:textColor="@color/primary_color"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/rtTutor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nguyễn Văn A"
+                    android:textColor="@color/text_color"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/primary_color"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đánh giá: "
+            android:textColor="@color/primary_color"
+            android:textStyle="bold" />
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/star_color"
+            android:numStars="5"
+            android:progressTint="@color/star_color"
+            android:rating="0"
+            android:secondaryProgressTint="@android:color/transparent"
+            android:stepSize="0.5"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bình luận: "
+        android:textColor="@color/primary_color"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/rtCmt"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:hint="Thêm bình luận"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:background="@drawable/bg_cmt"
+        android:padding="10dp"
+        android:layout_marginBottom="5dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu đánh giá"
+        android:layout_gravity="right"/>
+
+</LinearLayout>
