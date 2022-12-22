@@ -102,19 +102,6 @@
                             android:textSize="18sp"/>
 
                     </LinearLayout>
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/mbRating"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:layout_gravity="right|center_vertical"
-                        android:padding="@dimen/mediumSpace"
-                        android:text="Xem đánh giá"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"

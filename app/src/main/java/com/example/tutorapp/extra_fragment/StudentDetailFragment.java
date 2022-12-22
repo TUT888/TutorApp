@@ -27,7 +27,7 @@ public class StudentDetailFragment extends Fragment {
     private View mView;
     private CircleImageView civAvatar;
     private TextView tvName, tvEmail, tvSDT, tvGioiTinh, tvLinhVuc, tvKhuVuc, tvDate;
-    private MaterialButton mbContact, mbRating;
+    private MaterialButton mbContact;
     private ImageButton ibBack;
     private Student student;
     private String previousFragment;
@@ -54,7 +54,6 @@ public class StudentDetailFragment extends Fragment {
         tvKhuVuc = mView.findViewById(R.id.tvKhuVuc);
         mbContact = mView.findViewById(R.id.mbContact);
         ibBack = mView.findViewById(R.id.ibBack);
-        mbRating = mView.findViewById(R.id.mbRating);
 
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,12 +90,6 @@ public class StudentDetailFragment extends Fragment {
             }
             tvLinhVuc.setText(student.getFields());
             tvKhuVuc.setText(student.getAddress());
-            mbRating.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    iClickStudentBtnListener.openAllRatingsFragment(student.getPhoneNumber());
-                }
-            });
         }
 
         return mView;

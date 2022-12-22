@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/mediumSpace"
-            android:text="\tDanh sách lớp học"
+            android:text="\tDanh sách lớp dạy"
             android:drawableLeft="@drawable/ic_classes"
             android:drawableRight="@drawable/ic_arrow_right"
             android:drawableTint="@color/text_color"

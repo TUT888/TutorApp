@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_weight="8"
             android:layout_height="wrap_content"
-            android:text="Danh sách các lớp học"
+            android:text="Danh sách các lớp dạy"
             android:textSize="25sp"
             android:textColor="@color/primary_color"
             android:textStyle="bold"
