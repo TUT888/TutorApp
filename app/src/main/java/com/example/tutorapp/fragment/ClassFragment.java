@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tutorapp.MainActivity;
@@ -41,6 +42,7 @@ public class ClassFragment extends Fragment {
     boolean check = false;
     private User currentUser;
     Bundle bundle;
+    TextView txtViewClass;
 
     public ClassFragment() {
         // Required empty public constructor
@@ -61,6 +63,7 @@ public class ClassFragment extends Fragment {
         View view = (View) inflater.inflate(R.layout.fragment_class, container, false);
 
         rvClasses = view.findViewById(R.id.rvClasses);
+        txtViewClass = view.findViewById(R.id.txtViewClass);
         ibBack = view.findViewById(R.id.ibBack);
         ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,42 +94,50 @@ public class ClassFragment extends Fragment {
                 if(response.isSuccessful() && resultAPI != null){
                     if (resultAPI.getCode() == 0){
                         JsonArray jsonArray = resultAPI.getData().getAsJsonArray();
-                        for (int i = 0; i < jsonArray.size(); i++){
-                            JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
-                            ClassObject classObject = new ClassObject(jsonObject.get("id").getAsString(),
-                                    jsonObject.get("className").getAsString(), jsonObject.get("tutorPhone").getAsString(),
-                                    jsonObject.get("studentPhone").getAsString(), jsonObject.get("place").getAsString(),
-                                    jsonObject.get("status").getAsInt(), jsonObject.get("fee").getAsInt(),
-                                    jsonObject.get("dateTime").getAsString(), jsonObject.get("startDate").getAsString(),
-                                    jsonObject.get("endDate").getAsString(), jsonObject.get("method").getAsString(),
-                                    jsonObject.get("subject").getAsString(), jsonObject.get("field").getAsString());
-                            classObjects.add(classObject);
+                        if (jsonArray.size() == 0) {
+                            txtViewClass.setVisibility(View.VISIBLE);
+                            rvClasses.setVisibility(View.GONE);
                         }
-                        classAdapter.setData(classObjects);
-                        if (bundle != null) {
-                            ClassObject classObject = (ClassObject) bundle.getSerializable("class");
-                            if (classObjects != null && classObject != null) {
-                                for (ClassObject classObject1 : classObjects) {
-                                    if (classObject1.equalsTo(classObject)) {
-                                        adapterPosition = classObjects.indexOf(classObject1);
-                                    }
-                                }
+                        else {
+                            txtViewClass.setVisibility(View.GONE);
+                            rvClasses.setVisibility(View.VISIBLE);
+                            for (int i = 0; i < jsonArray.size(); i++) {
+                                JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
+                                ClassObject classObject = new ClassObject(jsonObject.get("id").getAsString(),
+                                        jsonObject.get("className").getAsString(), jsonObject.get("tutorPhone").getAsString(),
+                                        jsonObject.get("studentPhone").getAsString(), jsonObject.get("place").getAsString(),
+                                        jsonObject.get("status").getAsInt(), jsonObject.get("fee").getAsInt(),
+                                        jsonObject.get("dateTime").getAsString(), jsonObject.get("startDate").getAsString(),
+                                        jsonObject.get("endDate").getAsString(), jsonObject.get("method").getAsString(),
+                                        jsonObject.get("subject").getAsString(), jsonObject.get("field").getAsString());
+                                classObjects.add(classObject);
                             }
-                            if (adapterPosition != -1) {
-                                rvClasses.scrollToPosition(adapterPosition);
-                            }
-                        }
-                        mainActivity.getSupportFragmentManager().setFragmentResultListener("getAdapterPosition", getViewLifecycleOwner(),
-                                new FragmentResultListener() {
-                                    @Override
-                                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                                        adapterPosition = (int) result.getInt("adapter_position");
-                                        if (adapterPosition != -1) {
-                                            rvClasses.scrollToPosition(adapterPosition);
-                                            classAdapter.changeClassStatus(adapterPosition, 2);
+                            classAdapter.setData(classObjects);
+                            if (bundle != null) {
+                                ClassObject classObject = (ClassObject) bundle.getSerializable("class");
+                                if (classObjects != null && classObject != null) {
+                                    for (ClassObject classObject1 : classObjects) {
+                                        if (classObject1.equalsTo(classObject)) {
+                                            adapterPosition = classObjects.indexOf(classObject1);
                                         }
                                     }
-                                });
+                                }
+                                if (adapterPosition != -1) {
+                                    rvClasses.scrollToPosition(adapterPosition);
+                                }
+                            }
+                            mainActivity.getSupportFragmentManager().setFragmentResultListener("getAdapterPosition", getViewLifecycleOwner(),
+                                    new FragmentResultListener() {
+                                        @Override
+                                        public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                                            adapterPosition = (int) result.getInt("adapter_position");
+                                            if (adapterPosition != -1) {
+                                                rvClasses.scrollToPosition(adapterPosition);
+                                                classAdapter.changeClassStatus(adapterPosition, 2);
+                                            }
+                                        }
+                                    });
+                        }
                     }
                 }
             }

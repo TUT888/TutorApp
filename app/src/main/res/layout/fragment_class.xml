@@ -35,9 +35,21 @@
             android:textStyle="bold"
             android:layout_gravity="center"/>
     </LinearLayout>
+    <TextView
+    android:id="@+id/txtViewClass"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Bạn chưa có lớp học nào"
+    android:textColor="@color/primary_color"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:visibility="visible"
+    android:background="@drawable/time_table_border"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvClasses"/>
+        android:id="@+id/rvClasses"
+        android:visibility="gone"/>
 
 </LinearLayout>
