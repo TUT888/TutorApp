@@ -8,17 +8,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <color name="primary_color">#F18652</color>
+    <color name="primary_color">#006B99</color>
     <color name="time_table_bg">#FBAE89</color>
     <color name="time_table_text_color">#031D44</color>
-    <color name="text_color">#005377</color>
+    <color name="text_color">#F18652</color>
     <color name="star_color">#E6B400</color>
     <color name="active">#4CAF50</color>
     <color name="waiting">#E6B400</color>
     <color name="close">#F44336</color>
 
     <color name="on_primary_color">#FFFFA9</color> <!--New-->
-    <color name="bottomNav_selected">#FFFFA9</color> <!--New-->
+    <color name="bottomNav_selected">#FFFFFF</color> <!--New - FFFFA9 -->
     <color name="add_post_input_faded">#ECECEC</color>
 
     <color name="post_waiting">#D6A800</color>
