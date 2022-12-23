@@ -113,9 +113,10 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvPhoneNumber"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0909090909"
+                        android:layout_weight="1"
                         android:textSize="20sp"
                         android:textColor="@color/text_color"
                         android:layout_marginLeft="5dp"/>
@@ -133,8 +134,9 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvArea"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="Quận 7"
                         android:textSize="20sp"
                         android:textColor="@color/text_color"
@@ -154,8 +156,9 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvGender"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="Nam"
                         android:textSize="20sp"
                         android:textColor="@color/text_color"
@@ -175,10 +178,11 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvBirthday"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="22/02/2002"
                         android:textSize="20sp"
+                        android:layout_weight="1"
                         android:textColor="@color/text_color"
                         android:layout_marginLeft="5dp"/>
                 </TableRow>
@@ -196,9 +200,10 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvEmail"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Email"
+                        android:layout_weight="1"
                         android:textSize="20sp"
                         android:textColor="@color/text_color"
                         android:layout_marginLeft="5dp"/>
@@ -217,10 +222,11 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvStatus"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Đã xác thực"
                         android:textSize="20sp"
+                        android:layout_weight="1"
                         android:textColor="@color/text_color"
                         android:layout_marginLeft="5dp"/>
                 </TableRow>
