@@ -91,11 +91,13 @@
                         android:textColor="@color/primary_color"/>
                     <TextView
                         android:id="@+id/tvMonHoc"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Môn Toán"
                         android:textSize="@dimen/largeFontSize"
-                        android:textColor="@color/text_color"/>
+                        android:textColor="@color/text_color"
+                        android:layout_weight="1"
+                        android:singleLine="true"/>
                 </TableRow>
 
                 <TableRow>
@@ -108,11 +110,13 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvKhuVuc"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Quận 1, Quận 2"
                         android:textSize="@dimen/largeFontSize"
-                        android:textColor="@color/text_color"/>
+                        android:textColor="@color/text_color"
+                        android:layout_weight="1"
+                        android:singleLine="true"/>
                 </TableRow>
 
                 <TableRow>
@@ -125,11 +129,13 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvNgayHoc"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Thứ 2:9h-12h, Thứ 4:15h-17h30"
                         android:textSize="@dimen/largeFontSize"
-                        android:textColor="@color/text_color"/>
+                        android:textColor="@color/text_color"
+                        android:layout_weight="1"
+                        android:singleLine="true"/>
                 </TableRow>
                 <TableRow>
                     <TextView
@@ -141,11 +147,13 @@
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tvHinhThuc"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Offline"
                         android:textSize="@dimen/largeFontSize"
-                        android:textColor="@color/text_color"/>
+                        android:textColor="@color/text_color"
+                        android:layout_weight="1"
+                        android:singleLine="true"/>
                 </TableRow>
                 <TableRow>
                     <TextView
@@ -158,11 +166,13 @@
 
                     <TextView
                         android:id="@+id/tvHocPhi"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="200.000 "
                         android:textSize="@dimen/largeFontSize"
-                        android:textColor="@color/text_color"/>
+                        android:textColor="@color/text_color"
+                        android:layout_weight="1"
+                        android:singleLine="true"/>
                 </TableRow>
 
             </TableLayout>

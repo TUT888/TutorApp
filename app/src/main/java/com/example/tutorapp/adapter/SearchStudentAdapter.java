@@ -77,7 +77,7 @@ public class SearchStudentAdapter extends RecyclerView.Adapter<SearchStudentAdap
         return 0;
     }
     public class SearchStudentViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName, tvRole, tvGioiTinh, tvKhuVuc;
+        private TextView tvName, tvRole, tvGioiTinh, tvKhuVuc, tvChuyenMon;
         private ImageView imgAvatar, btnClose;
         public SearchStudentViewHolder(@NonNull View itemView) {
             super(itemView);
