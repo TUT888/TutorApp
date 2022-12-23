@@ -81,7 +81,7 @@ public interface APIService {
     Call<ResultAPI> getMyPosts(@Query("phoneNumber") String phoneNumber);
 
     @GET("class/get_pending_classes_from_tutor.php")
-    Call<ResultAPI> getPendingClassFromTutor(@Query("tutorPhone") String tutorPhone);
+    Call<ResultObjectAPI> getPendingClassFromTutor(@Query("tutorPhone") String tutorPhone);
 
     @GET("post/remove_my_post.php")
     Call<ResultStringAPI> removeMyPost(@Query("postID") String postID);

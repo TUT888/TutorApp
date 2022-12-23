@@ -3,14 +3,17 @@ package com.example.tutorapp.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tutorapp.MainActivity;
 import com.example.tutorapp.R;
 import com.example.tutorapp.app_interface.IClickPendingClassListener;
 import com.example.tutorapp.model.ClassObject;
+import com.example.tutorapp.model.User;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -18,10 +21,15 @@ import java.util.ArrayList;
 public class PendingClassAdapter extends RecyclerView.Adapter<PendingClassAdapter.PendingClassViewHolder> {
 
     private ArrayList<ClassObject> classes;
+    private ArrayList<Integer> roles;
+    private ArrayList<String> names;
     private IClickPendingClassListener mIClickPendingClassListener;
+    private MainActivity mMainActivity;
+    private User currentUser;
 
     public PendingClassAdapter(IClickPendingClassListener mIClickPendingClassListener) {
         this.mIClickPendingClassListener  = mIClickPendingClassListener;
+
     }
 
     public void setData(ArrayList<ClassObject> list) {
@@ -34,10 +42,22 @@ public class PendingClassAdapter extends RecyclerView.Adapter<PendingClassAdapte
         notifyDataSetChanged();
     }
 
+    public void setRoles(ArrayList<Integer> roles) {
+        this.roles = roles;
+        notifyDataSetChanged();
+    }
+
+    public void setNames(ArrayList<String> names) {
+        this.names = names;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public PendingClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.pending_class_object, parent, false);
+        mMainActivity = (MainActivity) view.getContext();
+        currentUser = mMainActivity.getCurrentLoginUser();
         return new PendingClassViewHolder(view);
     }
 
@@ -50,8 +70,8 @@ public class PendingClassAdapter extends RecyclerView.Adapter<PendingClassAdapte
         }
         //holder.imgAvatar.setImageResource(post.getUser().getAvatar());
         holder.className.setText(classObject.getClassName());
-        holder.classTutor.setText(getTutorName(classObject.getTutorPhone()));
-        holder.classFee.setText(classObject.getFee() + "");
+        holder.classTutor.setText(names.get(position));
+        holder.classFee.setText(classObject.getFee()+ "");
         holder.classStartDate.setText(classObject.getStartDate());
         holder.classEndDate.setText(classObject.getEndDate());
         holder.classTime.setText(classObject.getDateTime());
@@ -59,6 +79,15 @@ public class PendingClassAdapter extends RecyclerView.Adapter<PendingClassAdapte
         holder.classField.setText(classObject.getField());
         holder.classSubject.setText(classObject.getSubject());
         holder.classMethod.setText(classObject.getMethod());
+
+
+        if(roles.get(position) == 0){
+            holder.llButton.setVisibility(View.GONE);
+            holder.tvMessage.setVisibility(View.VISIBLE);
+        }else{
+            holder.tvMessage.setVisibility(View.GONE);
+            holder.llButton.setVisibility(View.VISIBLE);
+        }
 
         holder.btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +119,9 @@ public class PendingClassAdapter extends RecyclerView.Adapter<PendingClassAdapte
     }
 
     public class PendingClassViewHolder extends RecyclerView.ViewHolder {
-        private TextView className, classTutor, classStartDate, classEndDate, classSubject, classField, classPlace, classFee, classTime, classMethod;
+        private TextView tvMessage, className, classTutor, classStartDate, classEndDate, classSubject, classField, classPlace, classFee, classTime, classMethod;
         private MaterialButton btnAccept, btnReject;
+        private LinearLayout llButton;
 
         public PendingClassViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,6 +137,8 @@ public class PendingClassAdapter extends RecyclerView.Adapter<PendingClassAdapte
             classMethod = itemView.findViewById(R.id.classMethod);
             btnAccept = itemView.findViewById(R.id.btnAccept);
             btnReject = itemView.findViewById(R.id.btnReject);
+            tvMessage = itemView.findViewById(R.id.tvMessage);
+            llButton = itemView.findViewById(R.id.llButton);
         }
     }
 }

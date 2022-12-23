@@ -21,6 +21,7 @@ import com.example.tutorapp.R;
 import com.example.tutorapp.adapter.PendingClassAdapter;
 import com.example.tutorapp.api.APIService;
 import com.example.tutorapp.api.ResultAPI;
+import com.example.tutorapp.api.ResultObjectAPI;
 import com.example.tutorapp.api.ResultStringAPI;
 import com.example.tutorapp.app_interface.IClickPendingClassListener;
 import com.example.tutorapp.model.ClassObject;
@@ -38,6 +39,8 @@ public class PendingClassFragment extends Fragment {
     private ArrayList<ClassObject> pendingClassArrayList;
     private PendingClassAdapter pendingClassAdapter;
     private TextView tvLoginRequest;
+    private ArrayList<Integer> roles;
+    private ArrayList<String> names;
 
 
     private MainActivity mMainActivity;
@@ -75,7 +78,6 @@ public class PendingClassFragment extends Fragment {
             } else {
                 initClass();
             }
-
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             rcvPendingClass.setLayoutManager(linearLayoutManager);
 
@@ -164,17 +166,21 @@ public class PendingClassFragment extends Fragment {
     }
 
     private void initClass() {
+        roles = new ArrayList<>();
         pendingClassArrayList = new ArrayList<>();
+        names = new ArrayList<>();
         Log.d("currentUser", "initClass: " + currentUser.getPhoneNumber());
-        APIService.apiService.getPendingClassFromTutor(currentUser.getPhoneNumber()).enqueue(new retrofit2.Callback<ResultAPI>() {
+        APIService.apiService.getPendingClassFromTutor(currentUser.getPhoneNumber()).enqueue(new retrofit2.Callback<ResultObjectAPI>() {
             @Override
-            public void onResponse(retrofit2.Call<ResultAPI> call, retrofit2.Response<ResultAPI> response) {
-                ResultAPI resultAPI = response.body();
+            public void onResponse(retrofit2.Call<ResultObjectAPI> call, retrofit2.Response<ResultObjectAPI> response) {
+                ResultObjectAPI resultAPI = response.body();
                 Log.d("resultAPI", "onResponse: " + resultAPI);
                 if(response.isSuccessful() && resultAPI != null){
                     if (resultAPI.getCode() == 0){
-                        for (int i = 0; i < resultAPI.getData().getAsJsonArray().size(); i++){
-                            JsonObject jsonObject = resultAPI.getData().getAsJsonArray().get(i).getAsJsonObject();
+                        for (int i = 0; i < resultAPI.getData().get("class").getAsJsonArray().size(); i++){
+                            JsonObject jsonObject = resultAPI.getData().get("class").getAsJsonArray().get(i).getAsJsonObject();
+                            String name = resultAPI.getData().get("name").getAsJsonArray().get(i).getAsString();
+                            Log.d("jsonObject", "onResponse: " + jsonObject);
                             ClassObject classObject = new ClassObject();
                             classObject.setId(jsonObject.get("id").getAsString());
                             classObject.setClassName(jsonObject.get("className").getAsString());
@@ -182,7 +188,7 @@ public class PendingClassFragment extends Fragment {
                             classObject.setTutorPhone(jsonObject.get("tutorPhone").getAsString());
                             classObject.setStudentPhone(jsonObject.get("studentPhone").getAsString());
                             classObject.setPlace(jsonObject.get("place").getAsString());
-                            classObject.setStatus(jsonObject.get("status").getAsInt());
+                            classObject.setStatus(jsonObject.get("class_status").getAsInt());
                             classObject.setStartDate(jsonObject.get("startDate").getAsString());
                             classObject.setEndDate(jsonObject.get("endDate").getAsString());
                             classObject.setFee(jsonObject.get("fee").getAsInt());
@@ -190,15 +196,19 @@ public class PendingClassFragment extends Fragment {
                             classObject.setMethod(jsonObject.get("method").getAsString());
                             classObject.setField(jsonObject.get("field").getAsString());
                             pendingClassArrayList.add(classObject);
+                            roles.add(jsonObject.get("role").getAsInt());
+                            names.add(name);
                         }
                         pendingClassAdapter.setData(pendingClassArrayList);
+                        pendingClassAdapter.setRoles(roles);
+                        pendingClassAdapter.setNames(names);
                     }
                 }
 
             }
 
             @Override
-            public void onFailure(retrofit2.Call<ResultAPI> call, Throwable t) {
+            public void onFailure(retrofit2.Call<ResultObjectAPI> call, Throwable t) {
                 Toast.makeText(getContext(), "Lỗi kết nối", Toast.LENGTH_SHORT).show();
                 Log.d("onFailure", "onFailure: " + t.getMessage());
             }
@@ -209,7 +219,7 @@ public class PendingClassFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("Pending Class Fragment", "On Resume: Refresh & Get Data Again");
-        if (currentUser!=null) {
+        if (currentUser != null) {
             initClass();
             pendingClassAdapter.notifyDataSetChanged();
         }
