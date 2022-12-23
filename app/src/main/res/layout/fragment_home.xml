@@ -204,7 +204,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="12"
-            android:text="Hiện tại không có khóa học nào"
+            android:text="Hiện tại không có khóa dạy nào"
             android:gravity="center"
             android:textAlignment="center"
             android:textColor="@color/primary_color"
