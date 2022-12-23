@@ -302,6 +302,9 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String jsonString = sharedPref.getString(KEY_USER_LOGIN_HISTORY, null);
         User currentUser = gson.fromJson(jsonString, User.class);
+        if (currentUser!=null) {
+            setCurrentUserData(currentUser.getName(), currentUser.getAvatar());
+        }
 
         return currentUser;
     }
