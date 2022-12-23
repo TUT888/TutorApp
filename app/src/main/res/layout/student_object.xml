@@ -79,18 +79,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="Quận 1, Quận 2"/>
                         </TableRow>
-                        <TableRow>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text= "Chuyên môn: "
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:id="@+id/tvChuyenMon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Toán, Lý, Hóa"/>
-                        </TableRow>
                     </TableLayout>
                 </LinearLayout>
             </LinearLayout>
