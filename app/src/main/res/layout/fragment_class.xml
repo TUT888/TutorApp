@@ -39,7 +39,7 @@
     android:id="@+id/txtViewClass"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="Bạn chưa có lớp học nào"
+    android:text="Bạn chưa có lớp dạy nào"
     android:textColor="@color/primary_color"
     android:textSize="20sp"
     android:textStyle="bold"
