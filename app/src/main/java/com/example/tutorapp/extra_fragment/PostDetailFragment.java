@@ -140,6 +140,11 @@ public class PostDetailFragment extends Fragment {
                     pm.getMenu().removeItem(R.id.edit_post);
                     pm.getMenu().removeItem(R.id.create_class);
                 }
+                if (post.getStatus()==Post.POST_STATUS_CANCELLED) {
+                    pm.getMenu().removeItem(R.id.delete_post);
+                    pm.getMenu().removeItem(R.id.edit_post);
+                    pm.getMenu().removeItem(R.id.create_class);
+                }
                 pm.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
