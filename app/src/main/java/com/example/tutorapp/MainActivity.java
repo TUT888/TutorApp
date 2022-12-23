@@ -36,11 +36,11 @@ import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 //    public final static String URL = "http://192.168.1.8:8282"; // Tam url
-//    public final static String URL = "http://10.35.55.201"; ///Tien url
+    public static String URL = "http://10.0.136.237"; ///Tien url
 //    public final static String URL = "http://172.16.12.110"; ///Tien url
-    public final static String URL = "http://192.168.1.9:8080"; /// San url
+//    public static String URL = "http://192.168.1.9:8080"; /// San url
 
-    public final static String URL_IMAGE = URL +  "/image/";
+    public static String URL_IMAGE = URL +  "/image/";
     public static String CURRENT_LOGIN_AVATAR = "";
     public static String CURRENT_LOGIN_NAME = "";
     public static final String CURRENT_LOGIN_ROLE = "Gia sư";
