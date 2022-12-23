@@ -301,6 +301,9 @@ public static String URL = "http://172.31.98.225"; ///Tien url
         Gson gson = new Gson();
         String jsonString = sharedPref.getString(KEY_USER_LOGIN_HISTORY, null);
         User currentUser = gson.fromJson(jsonString, User.class);
+        if (currentUser!=null) {
+            setCurrentUserData(currentUser.getName(), currentUser.getAvatar());
+        }
 
         return currentUser;
     }
