@@ -122,7 +122,7 @@
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvSDT"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="0998987987"
                             android:textSize="16sp"
@@ -164,7 +164,7 @@
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvBirthday"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="11/11/2000"
                             android:layout_gravity="center_vertical"
@@ -185,7 +185,7 @@
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvEmail"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="nguyenvanA@gmail.com"
                             android:layout_weight="1"
@@ -208,7 +208,7 @@
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvKhuVuc"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Quận 1, Quận 2, Quận 3, Quận 4"
                             android:layout_gravity="center_vertical"
@@ -230,7 +230,7 @@
                             android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvLinhVuc"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Toán học, Vật lý"
                             android:layout_gravity="center_vertical"

@@ -63,9 +63,11 @@
                                 android:textStyle="bold"/>
                             <TextView
                                 android:id="@+id/tvGioiTinh"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Nam"/>
+                                android:text="Nam"
+                                android:layout_weight="1"
+                                android:singleLine="true"/>
                         </TableRow>
                         <TableRow>
                             <TextView
@@ -75,9 +77,11 @@
                                 android:textStyle="bold"/>
                             <TextView
                                 android:id="@+id/tvKhuVuc"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Quận 1, Quận 2"/>
+                                android:text="Quận 1, Quận 2"
+                                android:layout_weight="1"
+                                android:singleLine="true"/>
                         </TableRow>
                     </TableLayout>
                 </LinearLayout>
