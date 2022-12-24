@@ -67,7 +67,7 @@ public class SearchPostFragment extends Fragment {
         searchPostAdapter = new SearchPostAdapter(searchPostArrayList, new IClickPostObjectListener() {
             @Override
             public void onClickPostObject(Post post) {
-//
+                mMainActivity.goToPostDetailFragment(post, SearchPostFragment.class.getSimpleName());
             }
 
             @Override

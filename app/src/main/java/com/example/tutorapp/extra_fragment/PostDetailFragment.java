@@ -182,7 +182,7 @@ public class PostDetailFragment extends Fragment {
     }
 
     private void bindAndFillDetail() {
-        if (post==null || currentUser==null) {
+        if (post==null) {
             return;
         }
         tvTitle = mView.findViewById(R.id.tvTitle);

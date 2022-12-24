@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //    public final static String URL = "http://10.0.136.237"; ///Tien url
 //    public final static String URL = "http://172.16.12.110"; ///Tien url
 //    public final static String URL = "http://192.168.1.9:8080"; /// San url
-    public final static String URL = "http://172.31.98.11:8080"; /// IP ITZone
+    public final static String URL = "http://10.35.63.73"; /// IP ITZone
 
     public final static String URL_IMAGE = URL +  "/image/";
     public static String CURRENT_LOGIN_AVATAR = "";
