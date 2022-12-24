@@ -96,7 +96,9 @@ public class PendingClassFragment extends Fragment {
                                         public void onResponse(retrofit2.Call<ResultStringAPI> call, retrofit2.Response<ResultStringAPI> response) {
                                             ResultStringAPI resultAPI = response.body();
                                             if(resultAPI.getCode() == 0){
-                                                pendingClassAdapter.remove(classObject);
+                                                pendingClassArrayList.remove(classObject);
+                                                pendingClassAdapter.setData(pendingClassArrayList);
+                                                pendingClassAdapter.notifyDataSetChanged();
                                                 Toast.makeText(getContext(), "Đã tham gia lớp học", Toast.LENGTH_SHORT).show();
 
                                             }
@@ -134,7 +136,9 @@ public class PendingClassFragment extends Fragment {
                                             ResultStringAPI resultAPI = response.body();
                                             if(resultAPI.getCode() == 0){
                                                 Toast.makeText(getContext(), "Đã từ chối tham gia lớp học", Toast.LENGTH_SHORT).show();
-                                                pendingClassAdapter.remove(classObject);
+                                                pendingClassArrayList.remove(classObject);
+                                                pendingClassAdapter.setData(pendingClassArrayList);
+                                                pendingClassAdapter.notifyDataSetChanged();
                                             }
                                         }
 
@@ -194,7 +198,11 @@ public class PendingClassFragment extends Fragment {
                             classObject.setMethod(jsonObject.get("method").getAsString());
                             classObject.setField(jsonObject.get("field").getAsString());
                             pendingClassArrayList.add(classObject);
-                            roles.add(jsonObject.get("role").getAsInt());
+                            if(jsonObject.get("idUser").getAsString().equals(jsonObject.get("studentPhone").getAsString())) {
+                                roles.add(0);
+                            }else{
+                                roles.add(1);
+                            }
                             names.add(name);
                         }
                         pendingClassAdapter.setData(pendingClassArrayList);
