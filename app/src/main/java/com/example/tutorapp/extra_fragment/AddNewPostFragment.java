@@ -526,9 +526,9 @@ public class AddNewPostFragment extends Fragment {
         int radioId = rgMethod.getCheckedRadioButtonId();
         switch (radioId) {
             case R.id.rbOffline:
-                return "online";
-            case R.id.rbOnline:
                 return "offline";
+            case R.id.rbOnline:
+                return "online";
             default:
                 return "";
         }
