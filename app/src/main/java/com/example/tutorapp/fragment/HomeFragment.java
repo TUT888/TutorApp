@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     TableLayout thu2, thu3, thu4, thu5, thu6, thu7, cn;
     IClickTimeTableObjectListener iClickTimeTableObjectListener;
     User u;
+
     public HomeFragment(IClickTimeTableObjectListener iClickTimeTableObjectListener) {
         this.iClickTimeTableObjectListener = iClickTimeTableObjectListener;
     }
@@ -84,6 +85,29 @@ public class HomeFragment extends Fragment {
         super.onResume();
         Log.d("Home Fragment", "On Resume: Refresh & Get Data Again");
         if (u != null) {
+            Log.d("viewCount", thu2.getChildCount()+"");
+            if (thu2.getChildCount() > 1) {
+                Log.d("viewCount", thu2.getChildCount()+"");
+                thu2.removeViews(1, thu2.getChildCount() - 1);
+            }
+            if (thu3.getChildCount() > 1) {
+                thu3.removeViews(1, thu3.getChildCount() - 1);
+            }
+            if (thu4.getChildCount() > 1) {
+                thu4.removeViews(1, thu4.getChildCount() - 1);
+            }
+            if (thu5.getChildCount() > 1) {
+                thu5.removeViews(1, thu5.getChildCount() - 1);
+            }
+            if (thu6.getChildCount() > 1) {
+                thu6.removeViews(1, thu6.getChildCount() - 1);
+            }
+            if (thu7.getChildCount() > 1) {
+                thu7.removeViews(1, thu7.getChildCount() - 1);
+            }
+            if (cn.getChildCount() > 1) {
+                cn.removeViews(1, cn.getChildCount() - 1);
+            }
             String userId = u.getPhoneNumber();
             getData(userId);
         }
@@ -197,15 +221,19 @@ public class HomeFragment extends Fragment {
         if (childNum == 1) {
             addSchedule(childNum, time, classObject, tableLayout);
         } else {
+            boolean check = false;
             for (int i = 1; i < childNum; i++) {
                 Log.d("childNum: ", ""+i);
                 TableRow tableRow = (TableRow) tableLayout.getChildAt(i);
                 TextView textView = (TextView) tableRow.getChildAt(0);
                 String txt = textView.getText().toString();
                 Log.d("txtView: ", txt);
-                if (!txt.contains(time)) {
-                    addSchedule(childNum, time, classObject, tableLayout);
+                if (txt.contains(time)) {
+                    check = true;
                 }
+            }
+            if (check == false) {
+                addSchedule(childNum, time, classObject, tableLayout);
             }
         }
     }
