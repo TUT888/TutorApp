@@ -2,10 +2,10 @@
 Dự án cuối kỳ môn "Phát triển ứng dụng di động"<br>
 Đề tài: Ứng dụng trung gian cung cấp dịch vụ tìm kiếm gia sư <br>
 
-Dự án gồm 3 ứng dụng chính: <br>
+Dự án gồm 3 phần chính: <br>
 - Học viên (Android Application), mã nguồn: https://github.com/TUT888/StudentApp
 - Gia sư (Android Application), mã nguồn: https://github.com/TUT888/TutorApp
-- Admin (Web Application)
+- Backend, mã nguồn: https://github.com/TUT888/BackendStudentApp
 
 ## Project Description
 **Đây là mã nguồn ứng dụng dành cho gia sư** <br>
@@ -15,8 +15,8 @@ Dự án gồm 3 ứng dụng chính: <br>
   - Sau khi hoàn thành một khóa học, gia sư có thể xem đánh giá từ học viên để biết được những ưu nhược điểm, từ đó thay đổi, cải thiện chất lượng giảng dạy và độ uy tín của bản thân.
 
 ## Installation
-Dự án được thực hiện trên `Android Studio Dolphin | 2021.3.1 Patch1` <br>
-Các phiên bản Android Studio thấp hơn có thể sẽ không chạy được dự án
+- Dự án được thực hiện trên `Android Studio Dolphin | 2021.3.1 Patch1`, các phiên bản Android Studio thấp hơn có thể sẽ không chạy được dự án
+- Dự án cài đặt localhost với XAMPP. Để lấy được dữ liệu từ server, cần phải thay đổi địa chỉ IP được lưu ở biến URL tại MainActivity.java thành địa chỉ IPv4 của máy
 
 ## Authors
 Dự án được thực hiện bởi nhóm gồm 3 thành viên:
