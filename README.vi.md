@@ -1,4 +1,7 @@
 # Tutor Android Application
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/TUT888/TutorApp/blob/master/README.md)
+[![vi](https://img.shields.io/badge/lang-vi-red.svg)](https://github.com/TUT888/TutorApp/blob/master/README.vi.md)
+
 Dự án cuối kỳ môn "Phát triển ứng dụng di động"<br>
 Đề tài: Ứng dụng trung gian cung cấp dịch vụ tìm kiếm gia sư <br>
 
