@@ -8,7 +8,7 @@ Topic: The intermediary app facilitates the service of finding tutors <br>
 Project includes 3 modules: <br>
 - Application for student (Android Application) at: https://github.com/TUT888/StudentApp
 - Application for tutor (Android Application) at: https://github.com/TUT888/TutorApp
-- Backend API at: https://github.com/TUT888/BackendStudentApp
+- Web service at: https://github.com/TUT888/WebService-TutorApp
 
 ## Project Description
 **This is the source code for tutor application** <br>
