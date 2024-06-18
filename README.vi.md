@@ -8,7 +8,7 @@ Dự án cuối kỳ môn "Phát triển ứng dụng di động"<br>
 Dự án gồm 3 phần chính: <br>
 - Học viên (Android Application), mã nguồn: https://github.com/TUT888/StudentApp
 - Gia sư (Android Application), mã nguồn: https://github.com/TUT888/TutorApp
-- Backend, mã nguồn: https://github.com/TUT888/BackendStudentApp
+- Web service, mã nguồn: https://github.com/TUT888/WebService-TutorApp
 
 ## Project Description
 **Đây là mã nguồn ứng dụng dành cho gia sư** <br>
